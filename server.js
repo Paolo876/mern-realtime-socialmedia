@@ -10,14 +10,14 @@ const app = require('express')
 const next = require('next')
 const cors = require("cors");
 const dev = process.env.NODE_ENV !== 'production'
-const next = next({ dev })
-const handle = next.getRequestHandler()
+const nextApp = next({ dev })
+const handle = nextApp.getRequestHandler()
 const connectDB = require("./utilsServer/connectDb")
 require("dotenv").config();
 connectDB()
 const PORT = process.env.port || 3000
 
-next.prepare()
+nextApp.prepare()
 .then(() => {
   const server = app()
   server.get('*', (req, res) => {
