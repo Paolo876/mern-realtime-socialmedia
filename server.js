@@ -6,7 +6,8 @@
 // const app = express(); //init express
 // app.use(express.json());    // allow json data in req.body
 
-const app = require('express')
+const express = require('express')
+const app = express()
 const next = require('next')
 const cors = require("cors");
 const dev = process.env.NODE_ENV !== 'production'
@@ -14,17 +15,19 @@ const nextApp = next({ dev })
 const handle = nextApp.getRequestHandler()
 const connectDB = require("./utilsServer/connectDb")
 require("dotenv").config();
+
 connectDB()
 const PORT = process.env.port || 3000
+app.use(express.json());
+
 
 nextApp.prepare()
 .then(() => {
-  const server = app()
-  server.get('*', (req, res) => {
+  app.get('*', (req, res) => {
     return handle(req, res)
   })
 
-  server.listen(PORT, (err) => {
+  app.listen(PORT, (err) => {
     if (err) throw err
     console.log("running on port:".yellow.bold, PORT)
   })
