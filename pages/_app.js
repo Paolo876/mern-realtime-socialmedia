@@ -3,7 +3,7 @@ import axios from "axios"
 import { parseCookies, destroyCookie } from "nookies"
 import "react-toastify/dist/ReactToastify.css"
 import "semantic-ui-css/semantic.min.css"
-
+import "../styles.css";
 // const _app = () => {
 //   return (
 //     <div>_app</div>
@@ -22,7 +22,7 @@ const myApp = ({ Component, pageProps }) => {
 myApp.getInitialProps = async ({ Component, ctx }) => {
     const { token } = parseCookies(ctx);
     let pageProps = {};
-  
+
     const protectedRoutes =
       ctx.pathname === "/" ||
       ctx.pathname === "/[username]" ||
@@ -39,8 +39,8 @@ myApp.getInitialProps = async ({ Component, ctx }) => {
       try {
         const getFollowingData =
           ctx.pathname === "/notifications" || ctx.pathname === "/[username]";
-  
-        const res = await axios.get(`${baseUrl}/api/auth`, {
+        const res = await axios.get(`${process.env.CLIENT_ORIGIN}/api/auth`, {
+        // const res = await axios.get(`${baseUrl}/api/auth`, {
           headers: { Authorization: token },
           params: { getFollowingData }
         });

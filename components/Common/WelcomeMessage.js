@@ -8,11 +8,23 @@ export const HeaderMessage = () => {
 
   return <Message 
     attached 
-    color="teal"
-    header={signupRoute ? "Get Started" : "Welcome Back"} 
-    icon={signupRoute ? "settings" : "privacy"}
+    
+    color="blue"
+    header={signupRoute ? "Let's Get Started!" : "Welcome!"} 
+    // icon={signupRoute ? "settings" : "privacy"}
     content={signupRoute ? "Create New Account" : "Login with Email and Password"}
     />
+    // return <>
+    // { signupRoute ? 
+    //     <>
+    //         <Message attached="bottom" warning><Icon name="help"/>Already have an account? <Link href="/login">Click here to Login.</Link></Message>
+    //     </>
+    //     :
+    //     <>
+    //         <h1>Welcome!</h1>
+    //         <h3>Login with Email and Password</h3>
+    //     </>}
+    // </>
 }
 
 export const FooterMessage = () => {
