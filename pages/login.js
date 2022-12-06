@@ -1,8 +1,12 @@
 import React from 'react'
+import { HeaderMessage, FooterMessage } from '../components/Common/WelcomeMessage'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <>
+      <HeaderMessage/>
+      <FooterMessage/>
+    </>
   )
 }
 

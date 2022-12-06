@@ -9,7 +9,7 @@ function Navbar() {
   return <Menu fluid borderless>
     <Container text>
       <Link href="/login"><Menu.Item header active={isActive("/login")}><Icon size="large" name="sign in"/>Login</Menu.Item></Link>
-      <Link href="/signup"><Menu.Item header active={isActive("/signup")}><Icon size="large" name="edit"/>Sign Up</Menu.Item></Link>
+      <Link href="/signup"><Menu.Item header active={isActive("/signup")}><Icon size="large" name="signup"/>Sign Up</Menu.Item></Link>
     </Container>
   </Menu>;
 }
