@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { HeaderMessage, FooterMessage } from '../components/Common/WelcomeMessage'
 import { Form, Button, Message, Segment, TextArea, Divider, FormInput, Icon } from 'semantic-ui-react'
-
+import ImageInput from '../components/Common/ImageInput';
 const regexUserName = /^(?!.*\.\.)(?!.*\.$)[^\W][\w.]{0,29}$/;  //<-- no special characters
 
 const Signup = () => {
@@ -19,6 +19,12 @@ const Signup = () => {
   const [ isUsernameLoading, setIsUsernameLoading ] = useState(false)
   const [ isUsernameAvailable, setIsUsernameAvailable ] = useState(false)
 
+  //media
+  const [ image, setImage ] = useState(null)
+  const [ imageData, setImageData ] = useState(null)
+  const [ isHighlighted, setIsHighlighted ] = useState(false)
+
+  const inputRef = useRef();
   const handleSubmit = e => {
     e.preventDefault();
     if(name.trim().length === 0 || email.trim().length === 0 || password.trim().length === 0) {
@@ -45,6 +51,7 @@ const Signup = () => {
         {/* <Message error={formError} header="Error!" content={formError} onDismiss={() => setFormError(null)}/> */}
         {formError && <p>{formError}</p>}
         <Segment>
+          <ImageInput isHighlighted={isHighlighted} setIsHighlighted={setIsHighlighted} image={image} imageData={imageData} setImageData={setImageData} inputRef={inputRef}/>
           <FormInput 
             type="text" 
             label="Name" 
