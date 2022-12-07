@@ -48,8 +48,6 @@ const Signup = () => {
       <HeaderMessage/>
       <Form loading={isFormLoading} error={error} onSubmit={handleSubmit}>
         <Message error header="Error!" content={error} onDismiss={() => setError(null)}/>
-        {/* <Message error={formError} header="Error!" content={formError} onDismiss={() => setFormError(null)}/> */}
-        {formError && <p>{formError}</p>}
         <Segment>
           <ImageInput isHighlighted={isHighlighted} setIsHighlighted={setIsHighlighted} image={image} setImage={setImage} imageData={imageData} setImageData={setImageData} inputRef={inputRef}/>
           <FormInput 
@@ -100,7 +98,7 @@ const Signup = () => {
             fluid
             />
         <Divider hidden/>
-        <Button content="Signup" type="submit" color="orange" disabled={isFormLoading || !isUsernameAvailable} />
+        <Button content="Sign Up" icon="signup" type="submit" color="blue" disabled={isFormLoading || !isUsernameAvailable} />
         </Segment>
 
       </Form>

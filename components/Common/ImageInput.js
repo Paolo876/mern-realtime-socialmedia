@@ -36,7 +36,7 @@ const ImageInput = ({ isHighlighted, setIsHighlighted, image, setImage, imageDat
                     }}
                 >
                 {!imageData && <>
-                    <Segment color={isHighlighted ? "green" : ""} placeholder basic >
+                    <Segment color={isHighlighted ? "green" : null} placeholder basic >
                         <Header icon>
                             <Icon name="file image outline" style={{cursor: "pointer"}} onClick={() => inputRef.current.click()}/>
                             <p>Drag & Drop or Click To Upload Image</p>
