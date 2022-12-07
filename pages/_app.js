@@ -40,7 +40,6 @@ myApp.getInitialProps = async ({ Component, ctx }) => {
         const getFollowingData =
           ctx.pathname === "/notifications" || ctx.pathname === "/[username]";
         const res = await axios.get(`${process.env.CLIENT_ORIGIN}/api/auth`, {
-        // const res = await axios.get(`${baseUrl}/api/auth`, {
           headers: { Authorization: token },
           params: { getFollowingData }
         });

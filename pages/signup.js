@@ -13,6 +13,7 @@ const Signup = () => {
   const [ showPassword, setShowPassword ] = useState("")
   const [ error, setError ] = useState(null)
   const [ isFormLoading, setIsFormLoading ] = useState(false)
+  const [ formError, setFormError ] = useState(null)
     //username states
   const [ username, setUsername ] = useState("")
   const [ isUsernameLoading, setIsUsernameLoading ] = useState(false)
@@ -20,6 +21,12 @@ const Signup = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    if(name.trim().length === 0 || email.trim().length === 0 || password.trim().length === 0) {
+      setFormError("Inputs must not be left blank.")
+      console.log("err");
+
+    }
+    console.log("SUBMIT");
   }
 
   const handleUsernameChange = (value) => {
@@ -34,7 +41,9 @@ const Signup = () => {
     <>
       <HeaderMessage/>
       <Form loading={isFormLoading} error={error} onSubmit={handleSubmit}>
-        <Message error header="Error!" conent={error} onDismiss={() => setError(null)}/>
+        <Message error header="Error!" content={error} onDismiss={() => setError(null)}/>
+        {/* <Message error={formError} header="Error!" content={formError} onDismiss={() => setFormError(null)}/> */}
+        {formError && <p>{formError}</p>}
         <Segment>
           <FormInput 
             type="text" 
@@ -83,7 +92,10 @@ const Signup = () => {
             iconPosition='left'
             fluid
             />
+        <Divider hidden/>
+        <Button content="Signup" type="submit" color="orange" disabled={isFormLoading || !isUsernameAvailable} />
         </Segment>
+
       </Form>
       <FooterMessage/>
     </>

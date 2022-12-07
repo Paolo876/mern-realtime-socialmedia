@@ -23,6 +23,7 @@ app.use(express.json());
 
 nextApp.prepare()
 .then(() => {
+
   app.get('*', (req, res) => {
     return handle(req, res)
   })
