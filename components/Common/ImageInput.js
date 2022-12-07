@@ -1,6 +1,11 @@
 import React from 'react'
 import { Form, Segment, Image, Icon, Header, FormField } from 'semantic-ui-react'
-const ImageInput = ({ isHighlighted, setIsHighlighted, image, setImage, imageData, setImageData, inputRef, handleChange }) => {
+const ImageInput = ({ isHighlighted, setIsHighlighted, image, setImage, imageData, setImageData, inputRef }) => {
+  
+  const handleChange = (e) => {
+    setImage(e.target.files[0])
+    setImageData(URL.createObjectURL(e.target.files[0]))
+  }
   return (
     <>
         <FormField>
@@ -9,7 +14,7 @@ const ImageInput = ({ isHighlighted, setIsHighlighted, image, setImage, imageDat
                     style={{display: "none"}}
                     type="file"
                     accept='image/*'
-                    onChange={handleChange}
+                    onChange={ e => handleChange(e)}
                     name="media"
                     ref={inputRef}
                 />
@@ -26,7 +31,6 @@ const ImageInput = ({ isHighlighted, setIsHighlighted, image, setImage, imageDat
                         e.preventDefault()
                         setIsHighlighted(true)
                         const media = Array.from(e.dataTransfer.files)[0]
-                        console.log(media)
                         setImage(media)
                         setImageData(URL.createObjectURL(media))
                     }}
@@ -40,7 +44,7 @@ const ImageInput = ({ isHighlighted, setIsHighlighted, image, setImage, imageDat
                     </Segment>
                 </>}
                 {imageData && <>
-                    <Segment color="green">
+                    <Segment color="green" placeholder basic>
                         <Image src={imageData} size="medium" centered style={{cursor: "pointer"}} onClick={() => inputRef.current.click()}/>
                     </Segment>
                 </>}</div>
