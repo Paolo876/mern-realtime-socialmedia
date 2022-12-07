@@ -51,7 +51,7 @@ const Signup = () => {
         {/* <Message error={formError} header="Error!" content={formError} onDismiss={() => setFormError(null)}/> */}
         {formError && <p>{formError}</p>}
         <Segment>
-          <ImageInput isHighlighted={isHighlighted} setIsHighlighted={setIsHighlighted} image={image} imageData={imageData} setImageData={setImageData} inputRef={inputRef}/>
+          <ImageInput isHighlighted={isHighlighted} setIsHighlighted={setIsHighlighted} image={image} setImage={setImage} imageData={imageData} setImageData={setImageData} inputRef={inputRef}/>
           <FormInput 
             type="text" 
             label="Name" 
